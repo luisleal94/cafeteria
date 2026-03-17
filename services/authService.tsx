@@ -16,8 +16,6 @@ export const signInWithEmail = async (email: string, pwd: string) => {
         console.error('Error signing in:', error.message);
         return { success: false, error: error.message, data: null };
     }
-    
-    console.log('Sign-in data:', data);
     return { success: true, error: null, data };
 };
 
