@@ -1,41 +1,52 @@
 # Cafetería Azul - App Móvil
 
-Aplicación móvil desarrollada en React Native con Expo para la gestión y visualización de cafés preparados en una cafetería.
+Aplicación móvil desarrollada en **React Native con Expo**, que simula la experiencia de una cafetería digital.
 
 ## 📋 Descripción
 
-Cafetería Azul es una app móvil que permite a los usuarios autenticarse y explorar una lista de cafés preparados. La aplicación cuenta con un sistema de login seguro, navegación intuitiva y un diseño moderno con arquitectura atómica.
+Cafetería Azul es una app móvil que permite a los usuarios autenticarse y explorar una lista de cafés preparados.  
+Cuenta con un sistema de login seguro, navegación intuitiva y un diseño moderno basado en **arquitectura atómica**.
+
+## Pantallas
+
+<p align="center">
+   <img src="assets\img\img-01.png" alt="Description" width="300" height="600">
+   <img src="assets\img\img-02.png" alt="Description" width="300" height="600">
+   <img src="assets\img\img-03.png" alt="Description" width="300" height="600">
+</p>
 
 ## ✨ Funcionalidades
 
 ### Autenticación
 - **Login seguro**: Inicio de sesión con usuario y contraseña.
     -   Usuario: luisrleal94@gmail.com
-    -   pwd: 1234 ( contraseña de prueba )
+    -   pwd: 1234 ( demo )
 - **Validación**: Verificación de campos obligatorios y formato de contraseña.
 - **Autenticación con Supabase**: Integración con backend para gestión de usuarios.
 
-### Navegación y UI
-- **Header flotante**: Barra superior con título centrado y menú hamburguesa.
-- **Menú lateral**: Acceso a perfil, configuración y cierre de sesión.
-- **Lista de cafés**: Visualización de productos con imágenes, nombres y descripciones.
-- **Scroll automático**: Manejo eficiente de listas largas con virtualización.
 
 ### Gestión de Datos
-- **Consulta de cafés**: Obtención de datos desde base de datos Supabase.
-- **Imágenes dinámicas**: Carga de imágenes por producto desde almacenamiento.
-- **Estado global**: Gestión de autenticación con Zustand.
+- **Consulta de cafés** desde Supabase.
+- **Imágenes dinámicas** por producto desde almacenamiento.
+- **Estado global** con Zustand.
+
+
+### 🛒 Carrito de Compras
+- Agregar cafés seleccionados con control de cantidad.
+- Visualización del carrito en un modal.
+- Botones de **Cerrar** y **Pagar** con control de habilitación.
+- Eliminación de productos o decremento de cantidades.
 
 ## 🛠️ Requisitos
 
 ### Sistema
-- **Node.js**: Versión 20 o superior
+- **Node.js**: v20+
 - **npm** o **yarn**: Gestor de paquetes
 - **Expo CLI**: Para desarrollo y ejecución
 
 ### Hardware
-- Dispositivo móvil o emulador (iOS/Android)
-- Conexión a internet para autenticación y datos
+- Dispositivo físico o emulador (iOS/Android)
+- Conexión a internet
 
 ### Cuentas
 - **Supabase**: Cuenta activa con proyecto configurado
@@ -56,7 +67,7 @@ Cafetería Azul es una app móvil que permite a los usuarios autenticarse y expl
 
 3. **Configura Supabase**:
    - Crea un proyecto en [Supabase](https://supabase.com)
-   - Actualiza `services/client.ts` con tu URL y API key
+   - Actualiza `services/client.ts` con URL y API key
    - Configura las tablas `preparados` e `imgCoffe` con permisos adecuados
 
 4. **Ejecuta la app**:
