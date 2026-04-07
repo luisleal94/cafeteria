@@ -1,50 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { HamburgerButton } from './atoms/HamburgerButton'
-import { Menu } from './molecules/Menu'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-
   return (
-    <View style={styles.header}>
-      <HamburgerButton 
-        onPress={() => setMenuOpen(!menuOpen)} 
-        isOpen={menuOpen}
-      />
-      <Text style={styles.title}>Cafetería Azul</Text>
-      <View style={styles.spacer} />
-      <Menu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
-    </View>
+    <SafeAreaView>
+      <View style={styles.header}>
+        <Text style={styles.title}>Monito's Cofee </Text>
+      </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
     paddingTop: 50,
-    backgroundColor: '#fff',
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderBottomColor: '#E1D4C2',
     zIndex: 1001,
   },
   title: {
     flex: 1,
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
+    fontFamily: 'sans-serif',
     color: '#333',
     textAlign: 'center',
-  },
-  spacer: {
-    width: 40,
-  },
+    paddingTop: 5,
+  }
 })
 
 export default Header
