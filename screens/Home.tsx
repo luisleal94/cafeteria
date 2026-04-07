@@ -15,6 +15,7 @@ export const Home = () => {
   type DetailsNavProp = NativeStackNavigationProp<RootStackParamList, 'Details'>;
   const navigation = useNavigation<DetailsNavProp>();
   const [cafes, setCafes] = useState<Cafe[]>([]);
+  const [cantidades, setCantidades] = useState<number>(1);
   const [modalVisible, setModalVisible] = useState(false);
   const [cafeSelect, setcafeSelect] = useState<Cafe | null>(null);
   const [carritoCafe, setCarritoCafe] = useState<CarritoItem[]>([]);
@@ -74,6 +75,7 @@ export const Home = () => {
     if (viewableItems.length > 0) {
     const cafeVisible : Cafe = viewableItems[0].item;
     setcafeSelect(cafeVisible);
+    setCantidades(1)
     console.log("Café en pantalla:", cafeVisible.id, cafeVisible.nombreCafe);
     }
   };
@@ -87,7 +89,7 @@ export const Home = () => {
           updatedCarrito[index] = { ...updatedCarrito[index], cantidad: updatedCarrito[index].cantidad + 1 };
           return updatedCarrito;
         } else {
-          return [...prevCarrito, { cafe: cafeSelect, cantidad: 1 }];
+          return [...prevCarrito, { cafe: cafeSelect, cantidad: cantidades }];
         }
       });
       console.log('Café agregado al carrito:', cafeSelect.nombreCafe);
@@ -122,9 +124,18 @@ export const Home = () => {
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={{ itemVisiblePercentThreshold: 50 }}
       />
+      <View style={styles.controlsRow}>
+        <TouchableOpacity style={styles.controlButton} onPress={() => setCantidades(prev => (prev > 1 ? prev - 1 : 1))}>
+          <Text style={styles.controlText}>-</Text>
+        </TouchableOpacity>
+        <Text style={styles.cantidadText}>{ cantidades } </Text>
+        <TouchableOpacity style={styles.controlButton} onPress={() => setCantidades(prev => prev + 1)}>
+          <Text style={styles.controlText}>+</Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity
         style={styles.cartButton}
-        onPress={setCarrito}
+        onPress={()=>setCarrito()}
         activeOpacity={0.6}
       >
         <Text style={styles.cartButtonText}>Agregar al carrito</Text>
@@ -204,7 +215,7 @@ const styles = StyleSheet.create({
   },
   cartButton: {
     position: 'absolute',
-    bottom: 150,
+    bottom: 100,
     left: 20,
     right: 20,
     backgroundColor: '#A78D78',
@@ -223,6 +234,29 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-
+  controlsRow: {
+  bottom:200,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginVertical: 10,
+},
+controlButton: {
+  backgroundColor: '#A78D78',
+  paddingHorizontal: 15,
+  paddingVertical: 5,
+  borderRadius: 5,
+  marginHorizontal: 20,
+},
+controlText: {
+  color: '#fff',
+  fontSize: 20,
+  fontWeight: 'bold',
+},
+cantidadText: {
+  fontSize: 18,
+  fontWeight: 'bold',
+  color: '#333',
+},
 
 })
